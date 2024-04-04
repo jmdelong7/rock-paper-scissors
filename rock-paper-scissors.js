@@ -5,21 +5,18 @@ function getRandomInt(){
 function getComputerChoice() {
   const num = getRandomInt()
   if (num == 0) {
-    return 'Rock';
+    return 'rock';
   } else if (num == 1){
-    return 'Paper';
+    return 'paper';
   } else {
-    return 'Scissors';
+    return 'scissors';
   }
 }
 
 function getPlayerChoice() {
-  let playerSelection = prompt("Rock, Paper, Scissors?");
+  let playerSelection = prompt("Rock, Paper, Scissors?").toLowerCase();
   return playerSelection;
 }
-
-const computerSelection = getComputerChoice().toLowerCase()
-const playerSelection = getPlayerChoice();
 
 function playRound(playerSelection, computerSelection) {
 
@@ -53,8 +50,27 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function playGame() {
-  for (let i = 0; i < 4; i++){
-  console.log(playRound(playerSelection, computerSelection));
+  let playerScore = 0;
+  let computerScore = 0;
+  
+  for (let i = 0; i < 5; i++){
+    const computerSelection = getComputerChoice();
+    const playerSelection = getPlayerChoice();
+    game_result = playRound(playerSelection, computerSelection);
+    if (game_result.slice(0, 8) === "You win!") {
+      playerScore += 1
+    } else if (game_result.slice(0, 9) === "You lose!") {
+      computerScore += 1;
+    } 
+    console.log(playRound(playerSelection, computerSelection));
+  }
+  
+  if (playerScore > computerScore) {
+    console.log("You win the whole game! You won the most rounds out of 5!")
+  } else if (computerScore > playerScore) {
+    console.log("You lost the whole game! You lost the most rounds out of 5!")
+  } else {
+    console.log("Out of 5 games, you and the computer tied!")
   }
 }
 
