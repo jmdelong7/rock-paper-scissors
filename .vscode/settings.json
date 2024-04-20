@@ -1,0 +1,10 @@
+{
+  	// To ignore specific file changes
+	"liveServer.settings.ignoreFiles": [
+		".vscode/**",
+		"**/*.scss",
+		"**/*.sass",
+		"**/*.ts",
+    "**"
+	],
+}
