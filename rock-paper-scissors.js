@@ -23,6 +23,14 @@ const results = document.querySelector("div.results");
 let playerScore = 0;
 let computerScore = 0;
 
+function updatePlayerScore(score){
+  playerScoreEle.textContent = "Player Score: " + score;
+}
+
+function updateComputerScore(score){
+  computerScoreEle.textContent = "Computer Score: " + score;
+}
+
 rock.addEventListener("click", () => {
   const playerSelection = "Rock";
   const computerSelection = getComputerChoice();
@@ -36,12 +44,11 @@ rock.addEventListener("click", () => {
 
   if (round.slice(0, 8) === "You win!") {
     playerScore++;
+    updatePlayerScore(playerScore);
   } else if (round.slice(0, 9) === "You lose!") {
     computerScore++;
+    updateComputerScore(computerScore);
   } 
-  console.log(playerScore);
-  console.log(computerScore);
- 
 })
 
 paper.addEventListener("click", () => {
@@ -49,9 +56,19 @@ paper.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   
   let resultText = document.createElement("p");
+
+  let round = playRound(playerSelection, computerSelection);
   
-  resultText.textContent = playRound(playerSelection, computerSelection);
+  resultText.textContent = round;
   results.appendChild(resultText);
+
+  if (round.slice(0, 8) === "You win!") {
+    playerScore++;
+    updatePlayerScore(playerScore);
+  } else if (round.slice(0, 9) === "You lose!") {
+    computerScore++;
+    updateComputerScore(computerScore);
+  } 
 })
 
 scissors.addEventListener("click", () => {
@@ -59,9 +76,19 @@ scissors.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   
   let resultText = document.createElement("p");
+
+  let round = playRound(playerSelection, computerSelection);
   
-  resultText.textContent = playRound(playerSelection, computerSelection);
+  resultText.textContent = round;
   results.appendChild(resultText);
+
+  if (round.slice(0, 8) === "You win!") {
+    playerScore++;
+    updatePlayerScore(playerScore);
+  } else if (round.slice(0, 9) === "You lose!") {
+    computerScore++;
+    updateComputerScore(computerScore);
+  } 
 })
 
 function playRound(playerSelection, computerSelection) {
