@@ -23,6 +23,21 @@ const results = document.querySelector("div.results");
 let playerScore = 0;
 let computerScore = 0;
 
+
+
+function winner(playerScore, computerScore) {
+  if (playerScore === 5) {
+    setTimeout(() => {
+      alert("YOU WIN YOU HANDSOME BASTARD!!!");
+    }, 100);
+  }
+  if (computerScore === 5) {
+    setTimeout(() => {
+      alert("YOU LOSE AND YOU SUCK. REEVALUATE YOUR LIFE");
+    }, 100);
+  }
+}
+
 function updatePlayerScore(score){
   playerScoreEle.textContent = "Player Score: " + score;
 }
@@ -49,6 +64,9 @@ rock.addEventListener("click", () => {
     computerScore++;
     updateComputerScore(computerScore);
   } 
+
+  winner(playerScore, computerScore);
+  
 })
 
 paper.addEventListener("click", () => {
@@ -68,7 +86,10 @@ paper.addEventListener("click", () => {
   } else if (round.slice(0, 9) === "You lose!") {
     computerScore++;
     updateComputerScore(computerScore);
-  } 
+  }
+  
+  winner(playerScore, computerScore);  
+ 
 })
 
 scissors.addEventListener("click", () => {
@@ -89,6 +110,9 @@ scissors.addEventListener("click", () => {
     computerScore++;
     updateComputerScore(computerScore);
   } 
+
+  winner(playerScore, computerScore);
+
 })
 
 function playRound(playerSelection, computerSelection) {
