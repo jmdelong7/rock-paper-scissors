@@ -23,17 +23,33 @@ const results = document.querySelector("div.results");
 let playerScore = 0;
 let computerScore = 0;
 
+function clearResultsDiv() {
+  while (results.firstChild){
+    results.removeChild(results.firstChild);
+  }
+}
 
+function resetScore() {
+  playerScoreEle.textContent = "Player Score: 0";
+  computerScoreEle.textContent = "Computer Score: 0";
+  playerScore = 0;
+  computerScore = 0;
+}
 
 function winner(playerScore, computerScore) {
   if (playerScore === 5) {
     setTimeout(() => {
       alert("YOU WIN YOU HANDSOME BASTARD!!!");
+      clearResultsDiv();
+      resetScore();
     }, 100);
+    
   }
   if (computerScore === 5) {
     setTimeout(() => {
       alert("YOU LOSE AND YOU SUCK. REEVALUATE YOUR LIFE");
+      clearResultsDiv();
+      resetScore();
     }, 100);
   }
 }
@@ -144,36 +160,3 @@ function playRound(playerSelection, computerSelection) {
     return ("Tie, play again!");
   }
 }
-
-
-
-
-
-// function playGame() {
-//   let playerScore = 0;
-//   let computerScore = 0;
-  
-//   for (let i = 0; i < 5; i++){
-//     const computerSelection = getComputerChoice();
-//     const playerSelection = getPlayerChoice();
-//     game_result = playRound(playerSelection, computerSelection);
-//     if (game_result.slice(0, 8) === "You win!") {
-//       playerScore += 1
-//     } else if (game_result.slice(0, 9) === "You lose!") {
-//       computerScore += 1;
-//     } 
-//     console.log(playRound(playerSelection, computerSelection));
-//   }
-  
-//   if (playerScore > computerScore) {
-//     console.log("You win the whole game! You won the most rounds out of 5!")
-//   } else if (computerScore > playerScore) {
-//     console.log("You lost the whole game! You lost the most rounds out of 5!")
-//   } else {
-//     console.log("Out of 5 games, you and the computer tied!")
-//   }
-// }
-
-// playGame()
-
-
