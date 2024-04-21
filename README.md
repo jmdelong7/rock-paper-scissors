@@ -1,5 +1,11 @@
 # rock-paper-scissors
+## 2nd Iteration
+The game can now be played to 5 with buttons!
+Once a winner is declared, the game resets.
+This is my first major javascript project.
 
+## 1st Iteration
+---
 Rock Paper Scissors (RPS) game played against the computer.
 
 First JavaScript project.
